@@ -15,9 +15,9 @@ let
 
   # Create a derivation which, when built, writes some Nix code to
   # its $out path.
-  derivation-to-import = pkgs.writeText "ifd" ''
+  derivation-to-import = pkgs.writeText "ifd-${nonce}.nix" ''
     pkgs: pkgs.stdenv.mkDerivation {
-      name = "test-repo-smithy-ifd";
+      name = "test-repo-smithy-ifd-${nonce}";
       src = pkgs.fetchurl {
         url = "https://github.com/runeksvendsen/test-repo-smithy/archive/79fb1e22122775a5b4718e1919768d02333df252.tar.gz";
         sha256 = "sha256:0yvmw2nd5apps7g8lpsxd0k6d7y8kyd9zvd4prwh5bfi8zxxn3r5";
