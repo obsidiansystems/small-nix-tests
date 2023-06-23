@@ -11,7 +11,7 @@ let
 
   # Create a derivation which, when built, writes some Nix code to
   # its $out path.
-  derivation-to-import = pkgs.writeText "ifd" ''
+  derivation-to-import = pkgs.writeText "ifd.nix" ''
     pkgs: pkgs.stdenv.mkDerivation {
       name = "test-repo-smithy-ifd";
       src = pkgs.fetchurl {
