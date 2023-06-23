@@ -18,8 +18,10 @@ let
   # its $out path.
   derivation-to-import = pkgs.writeText "ifd-${nonce}.nix" ''
     pkgs: pkgs.stdenv.mkDerivation {
-      buildInputs = [ ${toString buildInputs} ];
       name = "test-repo-smithy-ifd-${nonce}";
+      buildInputs = [
+        ${toString (map (i: "(builtins.storePath ${i})") buildInputs)}
+      ];
       src = pkgs.fetchurl {
         url = "https://github.com/runeksvendsen/test-repo-smithy/archive/79fb1e22122775a5b4718e1919768d02333df252.tar.gz";
         sha256 = "sha256:0yvmw2nd5apps7g8lpsxd0k6d7y8kyd9zvd4prwh5bfi8zxxn3r5";
