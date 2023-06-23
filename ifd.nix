@@ -16,7 +16,7 @@ let
 
   # Create a derivation which, when built, writes some Nix code to
   # its $out path.
-  derivation-to-import = pkgs.writeText "ifd-${nonce}" ''
+  derivation-to-import = pkgs.writeText "ifd-${nonce}.nix" ''
     pkgs: pkgs.stdenv.mkDerivation {
       buildInputs = [ ${toString buildInputs} ];
       name = "test-repo-smithy-ifd-${nonce}";
